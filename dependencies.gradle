@@ -1,0 +1,58 @@
+ext {
+
+    def appcompatVersion = '1.0.2'
+    def material = '1.1.0-alpha08'
+    def constraintLayout = '1.1.3'
+    def fragment = '1.0.0'
+    def core = '1.0.2'
+    def coreKtx = '1.0.2'
+    def cardViewVersion = '1.0.0'
+    def recyclerViewVersion = '1.0.0'
+
+    def lifecycleExtensions = '2.0.0'
+    def roomRuntime = '2.1.0'
+    def lifecycleRuntime = '2.0.0'
+    def roomRxJava2 = '2.1.0'
+
+    def lifecycleCompiler = '2.0.0'
+    def roomCompiler = '2.1.0'
+
+
+    def koinVersion = '2.0.1'
+
+
+    androidSupportDependencies = [
+            appcompat       : "androidx.appcompat:appcompat:${appcompatVersion}",
+            material        : "com.google.android.material:material:${material}",
+            constraintLayout: "androidx.constraintlayout:constraintlayout:${constraintLayout}",
+            fragment        : "androidx.fragment:fragment:${fragment}",
+            core            : "androidx.core:core:${core}",
+            coreKtx         : "androidx.core:core-ktx:${coreKtx}",
+            cardview        : "androidx.cardview:cardview:${cardViewVersion}",
+            recyclerview    : "androidx.recyclerview:recyclerview:${recyclerViewVersion}",
+    ]
+
+
+    architectureDependencies = [
+            lifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:$lifecycleExtensions",
+            roomRuntime        : "androidx.room:room-runtime:$roomRuntime",
+            lifecycleRuntime   : "androidx.lifecycle:lifecycle-runtime:$lifecycleRuntime",
+            roomRxJava2        : "androidx.room:room-rxjava2:$roomRxJava2",
+            roomKtx            : "androidx.room:room-ktx:$roomRuntime"
+
+    ]
+
+    architectureKapt = [
+            lifecycleCompiler: "androidx.lifecycle:lifecycle-compiler:$lifecycleCompiler",
+            roomCompiler     : "androidx.room:room-compiler:$roomCompiler"
+    ]
+
+    koinDependencies = [
+            koinCore     : "org.koin:koin-core:$koinVersion",
+            koinAndroid  : "org.koin:koin-android:$koinVersion",
+            koinViewmodel: "org.koin:koin-androidx-viewmodel:$koinVersion",
+            koinScope    : "org.koin:koin-androidx-scope:$koinVersion"
+    ]
+
+
+}
