@@ -1,21 +1,37 @@
 package com.ms.koin
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import com.ms.koin.interfaces.IViewModelToActivityFactory
+import androidx.appcompat.app.AppCompatActivity
+import com.ms.koin.mvp.MVPActivity
+import com.ms.koin.mvp.presenter.MvpPresenterImp
+import com.ms.koin.mvp.view.MvpView
+import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
+import org.koin.core.parameter.parametersOf
 
-class MainActivity : AppCompatActivity() {
-    val presenter : IViewModelToActivityFactory by inject()
+class MainActivity : AppCompatActivity(), MvpView {
+
+    private val mMvpPresenter : MvpPresenterImp by inject { parametersOf(this) }
+
+    override fun loginSuccess() {
+
+    }
+
+    override fun displayToast(message: String?) {
+
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        btnMVP.setOnClickListener {
+            startActivity(Intent(this@MainActivity, MVPActivity::class.java))
+        }
 
-        Handler().postDelayed({
-            presenter.finish()
-        },5000)
+
+        mMvpPresenter.mArrayList.add("MainActivity")
 
     }
 }

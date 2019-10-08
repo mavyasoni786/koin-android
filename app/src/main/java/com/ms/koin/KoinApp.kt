@@ -5,6 +5,7 @@ import com.ms.koin.injections.appModule
 import com.ms.koin.injections.appViewModelModule
 import com.ms.koin.injections.databaseModule
 import com.ms.koin.interfaces.IAppLifeCycleCallback
+import com.ms.koin.mvp.injections.mvpModule
 import com.ms.koin.utils.ApplicationLifecycleCallbacks
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidFileProperties
@@ -12,7 +13,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
 
-class KoinApp : Application(){
+class KoinApp : Application() {
 
     var mLifecycleCallbacks: IAppLifeCycleCallback? = null
 
@@ -22,7 +23,7 @@ class KoinApp : Application(){
         initializeTimber()
         initializeKoin()
         mLifecycleCallbacks = ApplicationLifecycleCallbacks()
-        registerActivityLifecycleCallbacks(mLifecycleCallbacks);
+        registerActivityLifecycleCallbacks(mLifecycleCallbacks)
     }
 
     override fun onTerminate() {
@@ -30,8 +31,8 @@ class KoinApp : Application(){
         if (instance != null) {
 
             if (mLifecycleCallbacks != null) {
-                unregisterActivityLifecycleCallbacks(mLifecycleCallbacks);
-                mLifecycleCallbacks = null;
+                unregisterActivityLifecycleCallbacks(mLifecycleCallbacks)
+                mLifecycleCallbacks = null
             }
 
             instance = null
@@ -53,7 +54,14 @@ class KoinApp : Application(){
             androidContext(this@KoinApp)
             androidLogger()
             androidFileProperties()
-            modules(listOf(appModule,databaseModule,appViewModelModule))
+            modules(
+                listOf(
+                    appModule,
+                    databaseModule,
+                    appViewModelModule,
+                    mvpModule
+                )
+            )
         }
     }
 }
